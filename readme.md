@@ -1,6 +1,5 @@
-# Service API tutorial [![Maintainability](https://api.codeclimate.com/v1/badges/ebbeabc3903af95477b7/maintainability)](https://codeclimate.com/github/xumr0x/service-api-example/maintainability)
+# Service API tutorial 
 
-![web](docs/images/frontend.png)
 
 In this tutorial, we will create a multi-server architecture for making a simple app for creating and retrieving a list of users from the database!
 
