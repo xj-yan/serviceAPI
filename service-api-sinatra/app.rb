@@ -1,20 +1,46 @@
 # entry point
 require 'sinatra'
+require 'faker'
 
 require_relative './models/user'
 
 # Retrieve all users from database.
 get '/users' do
-  'Implement me!'
+  # User.all.to_json
+  @users = Array.new
+  User.all.each do |user|
+    @users.push(user.to_json)
+  end
+  puts @users.class
+  puts @users.length
+  @users
 end
 
 # Create n users.
 post '/users' do
   count = params[:n].to_i || 1
-  'Implement me!'
+  if count > 30
+    status 400
+    return
+  end
+
+  if count == 0
+    1.times.each do |x|
+      User.create(name: Faker::Name.name, email: Faker::Internet.email, bio: Faker::Job.title, password: Faker::Internet.password(min_length: 10, max_length: 20))
+    end
+  else
+    count.times.each do |x|
+      User.create(name: Faker::Name.name, email: Faker::Internet.email, bio: Faker::Job.title, password: Faker::Internet.password(min_length: 10, max_length: 20))
+    end
+  end
+  status 200
 end
 
 # Delete all users.
 post '/users/destroy' do
-  'Implement me!'
+  if User.delete_all
+    status 200
+  else
+    status 500
+  end
 end
