@@ -1,4 +1,49 @@
+<head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
 
-<h3>Total users: <%= number %></h3>
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+</head>
 
 
+<div class="container">
+
+    <h3>Total users: <%= users.length %></h3>
+
+    <div class="form-inline">
+        <form action="/users" method="post">
+            <input type="text" class="form-control mb-2 mr-sm-2" name="n">
+            <button type="submit" class="btn btn-primary mb-2">Generate</button>
+        </form>
+
+        <form action="http://<%=ENV['API_HOST']%>:<%=ENV['API_PORT']%>/users/destroy" method="post">
+            <button type="submit" class="btn btn-primary mb-2">Destroy</button>
+        </form>
+
+        <button class="btn btn-primary mb-2" onclick="window.location.href='/'">Refresh</button>
+
+    </div>
+
+    <table class="table table-striped">
+    <thead>
+        <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Bio</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% users.each do |user| %>
+        <tr>
+            <td><%= user["name"] %></td>
+            <td><%= user["email"] %></td>
+            <td><%= user["bio"] %></td>
+        </tr>
+        <% end %>
+    </tbody>
+    </table>
+</div>
