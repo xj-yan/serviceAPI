@@ -16,7 +16,6 @@ post '/users' do
   count = params[:n].to_i || 1
   if count > 30
     status 400
-    redirect 'http://127.0.0.1:4567/' 
     return
   end
 
@@ -29,7 +28,6 @@ post '/users' do
       User.create(name: Faker::Name.name, email: Faker::Internet.email, bio: Faker::Job.title, password: Faker::Internet.password(min_length: 10, max_length: 20))
     end
   end
-  redirect 'http://127.0.0.1:4567/'
   status 200
 end
 
@@ -40,5 +38,4 @@ post '/users/destroy' do
   else
     status 500
   end
-  redirect 'http://127.0.0.1:4567/'
 end

@@ -13,20 +13,26 @@
 <div class="container">
 
     <h3>Total users: <%= users.length %></h3>
+        <ul class="list-inline">
+            <li class="list-inline-item">
+                <form action="/users" class="form-inline pull-right" method="post">
+                    <input type="text" class="form-control" name="n">
+                    <button type="submit" class="btn btn-primary">Generate</button>
+                </form>
+            </li>
+            <li class="list-inline-item">
+                <form action="/" class="form-inline pull-right" method="get">
+                    <button type="submit" class="btn btn-primary mb-2">Refresh</button>
+                </form>
+            </li>
+            <li class="list-inline-item">
+                <form action="/users/destroy" class="form-inline pull-right" method="post">
+                    <button type="submit" class="btn btn-danger mb-2">Destroy</button>
+                </form>
+            </li>
+        </ul>
 
-    <div class="form-inline">
-        <form action="/users" method="post">
-            <input type="text" class="form-control mb-2 mr-sm-2" name="n">
-            <button type="submit" class="btn btn-primary mb-2">Generate</button>
-        </form>
 
-        <form action="http://<%=ENV['API_HOST']%>:<%=ENV['API_PORT']%>/users/destroy" method="post">
-            <button type="submit" class="btn btn-primary mb-2">Destroy</button>
-        </form>
-
-        <button class="btn btn-primary mb-2" onclick="window.location.href='/'">Refresh</button>
-
-    </div>
 
     <table class="table table-striped">
     <thead>

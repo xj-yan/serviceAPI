@@ -24,3 +24,9 @@ post '/users' do
   Net::HTTP.post_form(uri, 'n' => params["n"])
   redirect '/'
 end
+
+post '/users/destroy' do
+  uri = URI.join("http://#{settings.api}:#{settings.api_port}","users/destroy")
+  Net::HTTP.post_form(uri, nil => nil)
+  redirect '/'
+end
