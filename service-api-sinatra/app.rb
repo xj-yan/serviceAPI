@@ -20,14 +20,12 @@ post '/users' do
   end
 
   if count == 0
-    1.times.each do |x|
-      User.create(name: Faker::Name.name, email: Faker::Internet.email, bio: Faker::Job.title, password: Faker::Internet.password(min_length: 10, max_length: 20))
-    end
-  else
-    count.times.each do |x|
-      User.create(name: Faker::Name.name, email: Faker::Internet.email, bio: Faker::Job.title, password: Faker::Internet.password(min_length: 10, max_length: 20))
-    end
+    count = 1
   end
+  count.times.each do |x|
+      User.create(name: Faker::Name.name, email: Faker::Internet.email, bio: Faker::Job.title, password: Faker::Internet.password(min_length: 10, max_length: 20))
+  end
+
   status 200
 end
 
