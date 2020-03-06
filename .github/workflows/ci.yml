@@ -29,7 +29,7 @@ jobs:
         PORT: 22
         KEY: ${{ secrets.FRONTEND_SSHKEY }}
         script: |
-          su - rails -c "cd /home/rails/serviceAPI/frontend-sinatra-xiaojing && bundle"
+          su - rails -c "cd /home/rails/serviceAPI/frontend-sinatra && bundle"
           sudo systemctl restart rails.service
     - name: (Service API) Copy file via scp
       uses: appleboy/scp-action@master
@@ -50,5 +50,5 @@ jobs:
         PORT: 22
         KEY: ${{ secrets.API_SSHKEY }}
         script: |
-          su - rails -c "cd /home/rails/serviceAPI/service-api-sinatra-xiaojing && bundle"
+          su - rails -c "cd /home/rails/serviceAPI/service-api-sinatra && bundle"
           sudo systemctl restart rails.service
