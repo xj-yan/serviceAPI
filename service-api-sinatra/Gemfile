@@ -4,6 +4,6 @@ gem 'sinatra'
 gem 'sinatra-activerecord'
 gem 'activerecord'
 gem 'pg'
-gem 'puma'
+gem 'puma', ">= 4.3.3"
 gem 'faker'
 gem 'rack-test'
